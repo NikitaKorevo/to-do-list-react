@@ -1,13 +1,17 @@
 import { Component } from "react";
+import Textarea from "./textarea/Textarea";
+import ButtonAdd from "./buttonAdd/ButtonAdd";
+import Notes from "./notes/Notes";
 
 class Main extends Component {
+
   render() {
     return (
       <main className="main">
         <p className="main__new-task">New Task</p>
-        <textarea id="myTextarea" name=""></textarea>
-        <button id="myButtonAdd" className="button-add">ADD</button>
-        <ul id="myUl" className="list"></ul>
+        <Textarea />
+        <ButtonAdd />
+        <Notes />
      </main>
     );
   }

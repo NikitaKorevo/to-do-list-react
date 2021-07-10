@@ -1,6 +1,6 @@
 import './scss/app.scss';
-import Header from './components/header/header';
-import Nav from './components/nav/nav';
+import Header from './components/header';
+import Nav from './components/nav';
 import Main from './components/main/main';
 
 function App() {
