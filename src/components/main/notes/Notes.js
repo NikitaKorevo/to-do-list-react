@@ -9,7 +9,7 @@ class Notes extends Component {
         {
           key: 0,
           id: 0,
-          p: 'У тебя получилось! asdfasdfasdfssssadfsdfsdf',
+          p: 'У тебя получилось! asdfasdfasdfssssadfsdfsdf asd fasd fa sdf asf sadf sd sa sadf sda sd sd asd d as s dasd s  ',
           isImportant: false,
           isDone: false,
         },
@@ -45,6 +45,13 @@ class Notes extends Component {
     this.setState({ notes: result});
   }
 
+  handleLineThroughNote = (id) => {
+    const arr = this.state.notes;
+    const result = arr.map((el, i) => {
+      return id === i ? { ...el, isDone: !this.state.notes[i].isDone } : el;
+    });
+    this.setState({ notes: result});
+  }
 
 
   render() {
@@ -54,8 +61,9 @@ class Notes extends Component {
       <ul id="myUl" className="list">
         { notes.map(note => (
           <Note
-            handleImportantNote={this.handleImportantNote}
             handleDeleteNote={this.handleDeleteNote}
+            handleImportantNote={this.handleImportantNote}
+            handleLineThroughNote = {this.handleLineThroughNote}
             key={note.key}
             id={note.id}
             p={note.p}

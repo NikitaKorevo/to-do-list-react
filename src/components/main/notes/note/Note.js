@@ -15,6 +15,10 @@ class Note extends Component {
     this.props.handleImportantNote(id);
   }
 
+  lineThroughNote = (id) => {
+    this.props.handleLineThroughNote(id);
+  }
+
   render() {
     const {id, p, isImportant, isDone} = this.props;
     const important = isImportant === true ? 'important'  : undefined;
@@ -22,7 +26,7 @@ class Note extends Component {
 
     return (
         <li>
-          <p className={[important, done].join(' ')}>{p}</p>
+          <p onClick={() => this.lineThroughNote(id)} className={[important, done].join(' ')}>{p}</p>
           <button onClick={() => this.importantNote(id)}  className="button-important">MARK IMPORTANT</button>
           <button onClick={() => this.deleteNote(id)} className="button-trash"></button>
         </li>
