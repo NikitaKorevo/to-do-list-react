@@ -7,38 +7,45 @@ class Notes extends Component {
     this.state = {
       notes: [
         {
+          key: 0,
+          id: 0,
+          p: 'У тебя получилось! asdfasdfasdfssssadfsdfsdf',
+          isImportant: false,
+          isDone: false,
+        },
+        {
           key: 1,
           id: 1,
-          p: 'У тебя получилось!',
+          p: 'Вторая заметка',
           isImportant: true,
           isDone: true,
         },
         {
           key: 2,
           id: 2,
-          p: 'Вторая заметка',
+          p: '333333 заметка',
           isImportant: false,
           isDone: false,
         }
       ]
-
-      
     }
-
-    
   }
 
-  toggleDeleteNote = (id) => {
+  handleDeleteNote = (id) => {
     this.setState(({notes}) => ({
       notes: notes.filter((note) => note.id !== id)
     }));
   }
 
-  /* toggleImportantNote = (id) => {
-    this.setState( ({notes}) => ({
-      notes: notes.map((note) => )
-    }));
-  }  */
+  handleImportantNote = (id) => {
+    const arr = this.state.notes;
+    const result = arr.map((el, i) => {
+      return id === i ? { ...el, isImportant: !this.state.notes[i].isImportant} : el;
+    });
+    this.setState({ notes: result});
+  }
+
+
 
   render() {
     const {notes} = this.state;
@@ -47,8 +54,8 @@ class Notes extends Component {
       <ul id="myUl" className="list">
         { notes.map(note => (
           <Note
-            toggleImportantNote={this.toggleImportantNote}
-            toggleDeleteNote={this.toggleDeleteNote}
+            handleImportantNote={this.handleImportantNote}
+            handleDeleteNote={this.handleDeleteNote}
             key={note.key}
             id={note.id}
             p={note.p}
@@ -65,3 +72,4 @@ class Notes extends Component {
 export default Notes;
 
 // <Note id={this.state.notes[0].id} p={this.state.notes[0].p} isImportant={this.state.notes[0].isImportant} isDone={this.state.notes[0].isDone} />
+// notes: this.state.notes[id].isImportant = false 

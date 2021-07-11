@@ -5,28 +5,27 @@ class Note extends Component {
     super(props);
     this.state = {
     }
-    console.log(this.props.handleDeleteNote);
   }
 
   deleteNote = (id) => {
-    this.props.toggleDeleteNote(id);
+    this.props.handleDeleteNote(id);
   }
 
   importantNote = (id) => {
-    this.props.toggleImportantNote(id);
+    this.props.handleImportantNote(id);
   }
 
   render() {
     const {id, p, isImportant, isDone} = this.props;
-    const important = isImportant ? 'important'  : undefined;
-    const done = isDone ? 'line-through' : undefined;
+    const important = isImportant === true ? 'important'  : undefined;
+    const done = isDone === true ? 'line-through' : undefined;
 
     return (
         <li>
           <p className={[important, done].join(' ')}>{p}</p>
           <button onClick={() => this.importantNote(id)}  className="button-important">MARK IMPORTANT</button>
           <button onClick={() => this.deleteNote(id)} className="button-trash"></button>
-        </li> 
+        </li>
     );
   }
 }
@@ -40,3 +39,5 @@ export default Note;
         notes: notes.filter(note => note.id !== id)
       }));
     } */
+
+// {[important, done].join(' ')}
