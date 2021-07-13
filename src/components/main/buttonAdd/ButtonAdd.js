@@ -1,15 +1,15 @@
 import { Component } from "react";
 
 class ButtonAdd extends Component {
-  asdf() {
-    console.log('123');
+  ButtonAddPressed() {
+    this.props.handleButtonAddPressed();
   }
   
   render() {
     
 
     return (
-      <button onClick={() => this.asdf()} id="myButtonAdd" className="button-add">ADD</button>
+      <button onClick={() => this.ButtonAddPressed()} id="myButtonAdd" className="button-add">ADD</button>
     );
   }
 }
