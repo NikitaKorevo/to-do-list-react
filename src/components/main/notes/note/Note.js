@@ -23,11 +23,12 @@ class Note extends Component {
     const {id, p, isImportant, isDone} = this.props;
     const important = isImportant === true ? 'important'  : undefined;
     const done = isDone === true ? 'line-through' : undefined;
+    const backgroundColorButtonImportant = isImportant === true ? "rgb(194, 194, 194)" : undefined;
 
     return (
         <li>
           <p onClick={() => this.lineThroughNote(id)} className={[important, done].join(' ')}>{p}</p>
-          <button onClick={() => this.importantNote(id)}  className="button-important">MARK IMPORTANT</button>
+          <button onClick={() => this.importantNote(id)}  className="button-important" style={{backgroundColor: backgroundColorButtonImportant}}>MARK IMPORTANT</button>
           <button onClick={() => this.deleteNote(id)} className="button-trash"></button>
         </li>
     );
