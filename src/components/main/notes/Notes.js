@@ -110,15 +110,17 @@ class Notes extends Component {
 
 
   render() {
+    let headerInput = this.props.headerInput || '';
     let copyNotes = this.state.notes;
     const WhichPressedNavButton = this.props.WhichPressedNavButton;
     console.log(WhichPressedNavButton);
-    if (WhichPressedNavButton === 'myButtonAll' || WhichPressedNavButton === undefined) {
+
+    if (WhichPressedNavButton === 'myButtonAll') {
       return (
         <ul id="myUl" className="list">
   
           { copyNotes.map((note) => {
-            return (
+            return (note.p.toLowerCase()).includes(headerInput.toLowerCase()) ?(
             <Note
               handleDeleteNote={this.handleDeleteNote}
               handleImportantNote={this.handleImportantNote}
@@ -129,7 +131,8 @@ class Notes extends Component {
               isImportant={note.isImportant}
               isDone={note.isDone} 
             />
-          )})}
+          ) : console.log();
+        })}
           
         </ul>
       );
@@ -140,7 +143,7 @@ class Notes extends Component {
         <ul id="myUl" className="list">
   
           { copyNotes.map((note) => {
-            return note.isDone === false ? (
+            return (note.isDone === false && (note.p.toLowerCase()).includes(headerInput.toLowerCase())) ? (
             <Note
               handleDeleteNote={this.handleDeleteNote}
               handleImportantNote={this.handleImportantNote}
@@ -149,7 +152,7 @@ class Notes extends Component {
               id={note.id}
               p={note.p}
               isImportant={note.isImportant}
-              isDone={note.isDone} 
+              isDone={note.isDone}
             />
           ) : console.log();
           })}
@@ -163,7 +166,7 @@ class Notes extends Component {
         <ul id="myUl" className="list">
   
           { copyNotes.map((note) => {
-            return note.isDone === true ? (
+            return (note.isDone === true && (note.p.toLowerCase()).includes(headerInput.toLowerCase())) ? (
             <Note
               handleDeleteNote={this.handleDeleteNote}
               handleImportantNote={this.handleImportantNote}

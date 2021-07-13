@@ -34,7 +34,7 @@ class Main extends Component {
         <p className="main__new-task">New Task</p>
         <Textarea transferTextareaValue={this.transferTextareaValue} />
         <ButtonAdd handleButtonAddPressed={this.handleButtonAddPressed} />
-        <Notes WhichPressedNavButton={this.props.WhichPressedNavButton} handleButtonAddFalse={this.handleButtonAddFalse} isButtonAddPressed={this.state.isButtonAddPressed} textareaValueNow={this.state.textareaValueNow}/>
+        <Notes headerInput={this.props.headerInput} WhichPressedNavButton={this.props.WhichPressedNavButton} handleButtonAddFalse={this.handleButtonAddFalse} isButtonAddPressed={this.state.isButtonAddPressed} textareaValueNow={this.state.textareaValueNow}/>
      </main>
     );
   }

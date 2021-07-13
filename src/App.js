@@ -9,7 +9,11 @@ class App extends Component {
     super(props);
 
     this.state = {
+      WhichPressedNavButton: 'myButtonAll'
     }
+  }
+  getHeaderInput = (stringHeaderInput) => {
+    this.setState({headerInput: stringHeaderInput})
   }
 
   getPressedNavButton = (namePressedNavButton) => {
@@ -20,9 +24,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
-          <Header />
+          <Header getHeaderInput={this.getHeaderInput} />
           <Nav getPressedNavButton={this.getPressedNavButton} />
-          <Main WhichPressedNavButton={this.state.WhichPressedNavButton} />
+          <Main headerInput={this.state.headerInput} WhichPressedNavButton={this.state.WhichPressedNavButton} />
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ class Textarea extends Component {
     super(props);
 
     this.state = {
+      
     };
   }
 
