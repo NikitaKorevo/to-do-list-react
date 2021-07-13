@@ -54,7 +54,7 @@ class Notes extends Component {
     let arrStateNotes = this.state.notes;
     console.log('arrStateNotes' + arrStateNotes.length);
     this.setState({notes: arrStateNotes[arrStateNotes.length] = arrNote})
-    return arrStateNotes; 
+    return arrStateNotes;
   }
 
 
@@ -84,30 +84,37 @@ class Notes extends Component {
     localStorage.setItem('LocalStorageNotes',JSON.stringify(arrNote));
   }
 
-  handleImportantNote = (id) => {
+  handleImportantNote = (index) => {
+    console.log('handleImportantNote id ' + index);
+    console.log('this.state.notes' + this.state.notes)
     const arr = this.state.notes;
     const result = arr.map((el, i) => {
-      return id === i ? { ...el, isImportant: !this.state.notes[i].isImportant} : el;
+      return index === el.id ? { ...el, isImportant: !el.isImportant} : el;
+    });
+    this.setState({ notes: result});
+ 
+    let arrNote = this.loadingLocalStorage();
+    arrNote = arrNote.map((el, i) => {
+      return el.id === index ? {...el, isImportant: !el.isImportant} : el;
+    })
+    localStorage.setItem('LocalStorageNotes',JSON.stringify(arrNote));
+    return result;
+  }
+
+  handleLineThroughNote = (index) => {
+    const arr = this.state.notes;
+    const result = arr.map((el, i) => {
+      return index === el.id ? { ...el, isDone: !el.isDone } : el;
     });
     this.setState({ notes: result});
 
     let arrNote = this.loadingLocalStorage();
-    arrNote[id].isImportant = !arrNote[id].isImportant;
+    arrNote = arrNote.map((el, i) => {
+      return el.id === index ? {...el, isDone: !el.isDone} : el;
+    })
     localStorage.setItem('LocalStorageNotes',JSON.stringify(arrNote));
+    return result;
   }
-
-  handleLineThroughNote = (id) => {
-    const arr = this.state.notes;
-    const result = arr.map((el, i) => {
-      return id === i ? { ...el, isDone: !this.state.notes[i].isDone } : el;
-    });
-    this.setState({ notes: result});
-
-    let arrNote = this.loadingLocalStorage();
-    arrNote[id].isDone = !arrNote[id].isDone;
-    localStorage.setItem('LocalStorageNotes',JSON.stringify(arrNote));
-  }
-
 
   render() {
     let headerInput = this.props.headerInput || '';
