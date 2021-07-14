@@ -37,7 +37,6 @@ class Notes extends Component {
     let arrNote = [];
     let idForLastNote = 0;
     arrNote = JSON.parse(localStorage.getItem('LocalStorageNotes'));
-    console.log('Arrnote в addNoteLocalStorage  ' + arrNote);
     if (arrNote === null){
       arrNote = [];
     } else {
@@ -52,7 +51,6 @@ class Notes extends Component {
 
     // для state
     let arrStateNotes = this.state.notes;
-    console.log('arrStateNotes' + arrStateNotes.length);
     this.setState({notes: arrStateNotes[arrStateNotes.length] = arrNote})
     return arrStateNotes;
   }
@@ -85,8 +83,6 @@ class Notes extends Component {
   }
 
   handleImportantNote = (index) => {
-    console.log('handleImportantNote id ' + index);
-    console.log('this.state.notes' + this.state.notes)
     const arr = this.state.notes;
     const result = arr.map((el, i) => {
       return index === el.id ? { ...el, isImportant: !el.isImportant} : el;
@@ -120,7 +116,6 @@ class Notes extends Component {
     let headerInput = this.props.headerInput || '';
     let copyNotes = this.state.notes;
     const WhichPressedNavButton = this.props.WhichPressedNavButton;
-    console.log(WhichPressedNavButton);
 
     if (WhichPressedNavButton === 'myButtonAll') {
       return (
@@ -163,7 +158,6 @@ class Notes extends Component {
             />
           ) : console.log();
           })}
-          
         </ul>
       );
     }

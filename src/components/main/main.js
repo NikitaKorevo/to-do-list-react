@@ -11,29 +11,35 @@ class Main extends Component {
       textareaValueNow: '',
       arrNotes: '',
       isButtonAddPressed: false,
+      clearTextareaValue: false
     }
   }
   
-  transferTextareaValue = (value) => {
+  transferTextareaValue = (value, statusClearTextareaValue) => {
     let textareaValueNow = value;
     this.setState({ textareaValueNow: textareaValueNow});
+    this.setState({clearTextareaValue: statusClearTextareaValue});
   }
 
   handleButtonAddPressed = () => {
     console.log('Кнопка нажата');
-    if (this.state.textareaValueNow !== '') this.setState({isButtonAddPressed: true});
+    if (this.state.textareaValueNow !== ''){
+      this.setState({isButtonAddPressed: true});
+      this.setState({clearTextareaValue: true});
+    }
   }
 
   handleButtonAddFalse = () => {
     this.setState({isButtonAddPressed : false});
+    this.setState({textareaValueNow: ''});
   }
 
   render() {
     return (
       <main className="main">
         <p className="main__new-task">New Task</p>
-        <Textarea transferTextareaValue={this.transferTextareaValue} />
-        <ButtonAdd handleButtonAddPressed={this.handleButtonAddPressed} />
+        <Textarea clearTextareaValue={this.state.clearTextareaValue} isButtonAddPressed={this.state.isButtonAddPressed} transferTextareaValue={this.transferTextareaValue} />
+        <ButtonAdd handleButtonAddPressed={this.handleButtonAddPressed} textareaValueNow={this.state.textareaValueNow}/>
         <Notes headerInput={this.props.headerInput} WhichPressedNavButton={this.props.WhichPressedNavButton} handleButtonAddFalse={this.handleButtonAddFalse} isButtonAddPressed={this.state.isButtonAddPressed} textareaValueNow={this.state.textareaValueNow}/>
      </main>
     );

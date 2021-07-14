@@ -5,18 +5,36 @@ class Textarea extends Component {
     super(props);
 
     this.state = {
-      
+      textareaValue: '',
+      isButtonAddPressed: false,
+      clearTextareaValue: false,
     };
   }
 
-   textareaChange = event => {
-    this.props.transferTextareaValue(event.target.value);
+  componentDidUpdate() {
+    if (this.props.clearTextareaValue === true) {
+      this.clearTextareaValue();
+    }
   } 
+
+  textareaChange = event => {
+/*     if (this.props.clearTextareaValue === true) {
+      this.setState({textareaValue: ''});
+    } */
+    this.setState({textareaValue: event.target.value});
+    this.props.transferTextareaValue(event.target.value, false);
+  }
+
+  clearTextareaValue = () => {
+      if (this.state.textareaValue !== '') {
+        this.setState({textareaValue: ''});
+      }
+  }
 
 
   render() {
     return (
-      <textarea onChange={this.textareaChange} ></textarea>
+      <textarea onChange={this.textareaChange} value={this.state.textareaValue}></textarea>
     );
   }
 }
