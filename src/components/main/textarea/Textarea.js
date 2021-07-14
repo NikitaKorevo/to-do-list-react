@@ -18,9 +18,6 @@ class Textarea extends Component {
   } 
 
   textareaChange = event => {
-/*     if (this.props.clearTextareaValue === true) {
-      this.setState({textareaValue: ''});
-    } */
     this.setState({textareaValue: event.target.value});
     this.props.transferTextareaValue(event.target.value, false);
   }

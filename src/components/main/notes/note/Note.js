@@ -37,13 +37,3 @@ class Note extends Component {
 }
 
 export default Note;
-
-//(isDone ? 'line-through' : undefined)
-
-/*hundleDeleteNote = (id) => {
-      this.setState({notes}) => ({
-        notes: notes.filter(note => note.id !== id)
-      }));
-    } */
-
-// {[important, done].join(' ')}

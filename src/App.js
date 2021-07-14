@@ -34,24 +34,3 @@ class App extends Component {
 }
 
 export default App;
-
- /* takeStatusNavButton = () => {
-  console.log('123');
-} */
-
-/* 
-function App() {
-  
-
-  return (
-    <div className="App">
-      <div className="wrapper">
-        <Header />
-        <Nav />
-        <Main />
-      </div>
-    </div>
-  );
-}
-
-export default App; */
